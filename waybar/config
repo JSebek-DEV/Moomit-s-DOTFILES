@@ -87,7 +87,8 @@
   },
   "exec-if": "which waybar-module-pacman-updates",
   "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300",
-  "on-click": "alacritty -e bash -c 'sudo pacman -Syu || yay -Syu; exec bash' && notify-send 'The system has been updated'"
+  "on-click": "alacritty -e bash -c 'sudo pacman -Syu; exec bash' && notify-send 'The system has been updated'",
+  "on-click-right" : "alacritty -e bash -c 'yay -Syu; exec bash' && notify-send 'The system has been updated'"
 }
 ,
     "clock": {
@@ -139,6 +140,7 @@
       "format": "{used:0.1f}G 󰾆",
       "format-alt": "{percentage}% 󰾆",
       "format-alt-click": "click",
+      "on-click-right" : "/home/moomit/.config/hypr/component/waybar/scripts/memory_eaters.sh",
       "tooltip": true,
       "tooltip-format": "{used:0.1f}GB/{total:0.1f}G"
     },
@@ -168,25 +170,26 @@
 				"on-click-right": "alacritty -e bash -c 'nmcli device wifi list; echo \"To connect to wifi, type: nmcli device wifi connect access_point_name password your_password\"; exec bash'"
     },
     "wireplumber": {
-        "scroll-step": 5,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol",
-        "format": "{icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-muted": "󰖁",
-				"format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-					"default": ["", "", "󰕾"]
-				},
-				"tooltip-format": "{volume}% volume"
+      "on-scroll-up" : "/home/moomit/volume_control.sh increase",
+      "on-scroll-down" : "/home/moomit/volume_control.sh decrease",
+      "on-click": "/home/moomit/volume_control.sh toggle",
+      "on-click-right": "pwvucontrol",
+      "format": "{icon}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "format-muted": "󰖁",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", "󰕾"]
+      },
+      "tooltip-format": "{volume}% volume"
 		},
     "custom/power": {
         "format": "󰐥",

@@ -30,7 +30,7 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = top-center
 
     # Offset from the origin
     offset = 20x20
@@ -39,7 +39,7 @@
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 20
+    notification_limit = 5
 
     ### Progress bar ###
 
@@ -163,7 +163,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%s\n%b"
+    format = "<b>%s</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -226,7 +226,7 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 5
 
     ### Misc/Advanced ###
 
@@ -428,9 +428,8 @@
 #    urgency = normal
 #
 #[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"
-#
+#   appname = "volume_control"
+#   set_stack_tag = "volume"
 # vim: ft=cfg
 
 [Type-1]
@@ -445,19 +444,19 @@
     background = "#f5e0dc"
     foreground = "#1e1e2e"
     frame_color = "#f38ba8"
-    icon = "$HOME/.config/dunst/icons/critical.svg"
+    icon = "/home/moomit/.config/dunst/icons/critical.png"
     timeout = 0
 
 [urgency_low]
-    background = "#6591A380"
-    foreground = "#CCF0FFE6"
-    frame_color = "#6591A303"
-    icon = "$HOME/.config/dunst/icons/hyprdots.svg"
-    timeout = 5
+    background = "#11111b"
+    foreground = "#CCDDFFE6"
+    frame_color = "#11111b"
+    icon = "/home/moomit/.config/dunst/icons/notification.png"
+    timeout = 1
 
 [urgency_normal]
-    background = "#3A4A6B80"
+    background = "#11111b"
     foreground = "#CCDDFFE6"
-    frame_color = "#3A4A6B03"
-    icon = "$HOME/.config/dunst/icons/hyprdots.svg"
+    frame_color = "#11111b"
+    icon = "/home/moomit/.config/dunst/icons/notification.png"
     timeout = 5

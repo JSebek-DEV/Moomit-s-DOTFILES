@@ -1,0 +1,1 @@
+dunstify -u critical "Memory Consumption (%):" "$(ps axch -o cmd:15,%mem --sort=-%mem | head -n 30)"
