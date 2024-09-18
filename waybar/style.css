@@ -1,0 +1,185 @@
+* {
+    font-family: JetBrains Nerd Font, Symbols Nerd Font;
+    font-weight: bolder;
+    font-size: 15px; /* 14 default */
+}
+
+window#waybar {
+    transition-property: background-color;
+    color:#cdd6f4;
+    transition-duration: 0.5s;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#waybar.empty #window {
+    background: none;
+  }
+
+/* This section can be use if you want to separate waybar modules */
+.modules-left, .modules-center, .modules-right {
+	background: #11111b; 
+ 	border: 0px solid;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 8px;
+	padding-left: 8px;
+	border-radius: 12px;
+
+} 
+
+.modules-left, .modules-right {
+  	border: 0px solid #b4befe;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+} 
+
+window#waybar.alacritty {
+    background-color: #3F3F3F;
+}
+
+window#waybar.firefox {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+#workspaces button:hover {
+    color: #b4befe;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #11111b;
+    border: #11111b;
+}
+#workspaces button {
+    padding: 0 5px;
+    color: #585b70;
+    margin: 4px 0 4px 6px;
+    transition: color 200ms ease-in-out;
+}
+
+#workspaces button.selected {
+    color: #74c7ec;
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-pacman,
+#custom-power,
+#custom-weather,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 9px;
+    color: #cdd6f4;
+    border-radius: 15px;
+    margin: 5px 0;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, reduce left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 2px;
+}
+
+#clock {
+  color: #cdd6f4;
+}
+
+#custom-pacman {
+  color: #fab387;
+}
+
+#pulseaudio {
+  color: #cba6f7;
+}
+
+#pulseaudio.muted {
+  color: #585b70;
+}
+
+#network {
+  color: #89dceb;
+}
+
+#cpu {
+    color: #fab387;
+}
+
+#memory {
+    color: rgb(140, 236, 191);
+}
+
+#network.disconnected {
+  color: #585b70;
+}
+
+#battery {
+    color: rgb(66, 240, 159);
+}
+
+#battery.warning:not(.charging) {
+    color: red;
+}
+
+#custom-power {
+  color: #f38ba8;
+  margin-right: 5px;
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}

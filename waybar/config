@@ -1,0 +1,218 @@
+{
+    "layer": "top",
+    "height": 34,
+    "spacing": 10,
+    "position": "top",
+    "fixed-center": true,
+    "margin-top": 3,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left": [
+        "custom/spotify",
+        "custom/nook",
+        "custom/separator",
+        "tray",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "custom/launcher",
+        "clock",
+        "custom/alacritty"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "custom/separator",
+        "wireplumber",
+        "network",
+        "battery",
+        "group/motherboard",
+        "custom/separator",
+        "custom/power"
+		],
+"hyprland/window": {
+    "format": "{}",
+    "max-length": 40,
+    "separate-outputs": true,
+    "offscreen-css" : true,
+    "offscreen-css-text": "(inactive)",
+     "rewrite": {
+          "(.*) — Mozilla Firefox": " $1",
+          "(.*) - fish": "> [$1]",
+      "(.*) - zsh": "> [$1]",
+      "(.*) - alacritty": "> [$1]"
+    }
+},
+    "hyprland/workspaces": {
+      "active-only":false,
+      "all-outputs": true,
+      "format": "{icon}",
+      "show-special": false,
+      "on-click": "activate",
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "persistent-workspaces":{
+        "1": [],
+        "2": []
+        },
+      "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+      "10": "X"
+      }
+},
+    "custom/alacritty":{
+      "format": "",
+      "tooltip-format": "Launch terminal",
+      "on-click": "alacritty -e bash -c 'fastfetch; echo \"Alacritty ready\"; exec bash'"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+"custom/updates": {
+  "format": "{icon} {0}",
+  "return-type": "json",
+  "format-icons": {
+    "has-updates": "",
+    "updated": "󰣇"
+  },
+  "exec-if": "which waybar-module-pacman-updates",
+  "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300",
+  "on-click": "alacritty -e bash -c 'sudo pacman -Syu || yay -Syu; exec bash' && notify-send 'The system has been updated'"
+}
+,
+    "clock": {
+        "tooltip-format": "{:%A, %B %d, %Y}",
+        "format": "{:%H:%M}"
+    },
+    "battery": {
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
+    "interval" : 5,
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-discharging": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "tooltip-format": "{timeTo} {power}w",
+    "format-icons": ["", "", "", "", ""]
+    },
+    "temperature": {
+      "thermal-zone": 2,
+      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "critical-threshold": 80,
+      "format-critical": "{temperatureC}°C {icon}",
+      "format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
+      "format-icons": ["", "", ""],
+      "tooltip-format" : "PC Temperature is: {temperatureC}°C"
+    },
+    "cpu": {
+      "format": "{usage}% 󰍛",  
+      "interval": 1,
+      "format-alt-click": "click",
+      "format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+      "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+
+    },
+    "custom/launcher":{
+      "format": " ",
+      "on-click": "wofi -show drun",
+      "on-click-right": "killall wofi",
+      "tooltip-format": "Search apps"
+    },
+    "memory":{
+      "interval": 10,
+      "format": "{used:0.1f}G 󰾆",
+      "format-alt": "{percentage}% 󰾆",
+      "format-alt-click": "click",
+      "tooltip": true,
+      "tooltip-format": "{used:0.1f}GB/{total:0.1f}G"
+    },
+    "disk": {
+    "interval": 30,
+    "path": "/",
+    "format-alt-click": "click",
+    "format": "{percentage_used}% 󰋊",
+    "tooltip": true,
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+},
+    "network": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰌘",
+        "format-disconnected": "󰌙", 
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format": "Connected to : {ifname}",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "max-length": 50,
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-alt-click": "click",
+        "format-alt" : "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+				"on-click-right": "alacritty -e bash -c 'nmcli device wifi list; echo \"To connect to wifi, type: nmcli device wifi connect access_point_name password your_password\"; exec bash'"
+    },
+    "wireplumber": {
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "format": "{icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-muted": "󰖁",
+				"format-icons": {
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+					"default": ["", "", "󰕾"]
+				},
+				"tooltip-format": "{volume}% volume"
+		},
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "wlogout"
+    },
+    "custom/spotify":{
+      "format": "",
+      "tooltip-format" : "Launch spotify-player",
+      "on-click" : "spotify-launcher"
+    },
+    "custom/nook":{
+      "format": "",
+      "tooltip-format" : "Launch nook",
+      "on-click" : "nook"
+    },
+    "group/motherboard": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "memory",
+      "temperature",
+      "disk"
+      ]	
+  },
+  "custom/separator":{
+    "format": " ",
+    "tooltip" : false
+  }
+}
