@@ -4,7 +4,9 @@ Hyprland,
 Waybar,
 dunst,
 wlogout,
-wofi
+wofi,
+alacrity,
+fastfetch
 
 Programs launched or used trough dotfiles
 pwvucontrol,
@@ -18,3 +20,6 @@ libreoffice,
 hyprpaper,
 clipse,
 polkit-gnome-authentication-agent
+fastfetch
+
+There is also custom script that controlls volume and sends notifications. Put it in /home/username/
