@@ -27,6 +27,6 @@ You can use bashrc textfile that contains configuration for terminal output.
 to make it work launch terminal and write nano ~/.bashrc
 then paste the bashrc text file text inside.
 it will do this: 
-1.Display you like so:  moomit ~:
-show where you are for example if you type cd yay it will show you:  moomit ~/yay: wich i think is very cool
+1.Display you like so: [ARCHLINUX ICON] moomit ~:
+show where you are for example if you type cd yay it will show you: [ARCHLINUX ICON] moomit ~/yay: wich i think is very cool
 2. When you type unknown command it will write Command not found in red color for better clarity
